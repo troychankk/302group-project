@@ -22,16 +22,16 @@ export default class Create extends Component {
       }
     
       getOrders = _ =>{
-        fetch('http://localhost:4000/orders')
+        fetch('http://localhost:5000/logistics/orders')
           .then(response => response.json())
           .then(response => this.setState({ orders: response.data}))
           .catch(err => console.error(err))
       }
     
       
-      renderOrder = ({ order_id, customer_id, product_name, order_date, total_price, deliver_status, locker_location, locker_number, locker_password, product_quantity }) => <div key={ order_id }> 
+      renderOrder = ({ order_id, customer_id, product_name, deliver_status, locker_location, locker_number, locker_password, product_quantity }) => <div key={ order_id }> 
         
-        order id: {order_id} <br></br> customer id: {customer_id} <br></br> product_name: {product_name} <br></br> order date: {order_date}<br></br> total price: {total_price} <br></br>deliver status: {deliver_status}<br></br> locker location: {locker_location}<br></br> locker number: {locker_number}<br></br> locker password: {locker_password} <br></br> product_quantity: {product_quantity} <hr></hr>
+        order id: {order_id} <br></br> customer id: {customer_id} <br></br> product_name: {product_name} <br></br>  deliver status: {deliver_status}<br></br> locker location: {locker_location}<br></br> locker number: {locker_number}<br></br> locker password: {locker_password} <br></br> product_quantity: {product_quantity} <hr></hr>
         </div>
   
 
@@ -52,7 +52,7 @@ export default class Create extends Component {
               <div className="col-md-8">
                   <div className="card">
                     <div className="card-body">
-                        {orders.map(this.renderOrder,this.addOrder)}
+                        {orders.map(this.renderOrder)}
                     </div>
                   </div>
               </div>
